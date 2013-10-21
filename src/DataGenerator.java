@@ -6,33 +6,34 @@ import java.util.Random;
 
 public class DataGenerator
 {
-	private static void resetFile(String fileName) throws IOException
+	private static String resetFile(String fileName) throws IOException
 	{
 		File f = new File(fileName);
 		if (f.exists())
 			f.delete();
 		f.getParentFile().mkdirs();
 		f.createNewFile();
+		return (f.getAbsolutePath());
 	}
 
-	public static void generate() throws IOException
+	public static String generate() throws IOException
 	{
-		generate(10, "data/data.bin");
+		return generate(10, "data/data.bin");
 	}
 
-	public static void generate(int accountNumber) throws IOException
+	public static String generate(int accountNumber) throws IOException
 	{
-		generate(accountNumber, "data/data.bin");
+		return generate(accountNumber, "data/data.bin");
 	}
 
-	public static void generate(String fileName) throws IOException
+	public static String generate(String fileName) throws IOException
 	{
-		generate(10, fileName);
+		return generate(10, fileName);
 	}
 
-	public static void generate(int accountNumber, String fileName) throws IOException
+	public static String generate(int accountNumber, String fileName) throws IOException
 	{
-		resetFile(fileName);
+		String absPath = resetFile(fileName);
 		DataOutputStream os = new DataOutputStream(new FileOutputStream(fileName));
 		Random rand = new Random(System.currentTimeMillis());
 
@@ -52,5 +53,7 @@ public class DataGenerator
 		}
 
 		os.close();
+
+		return (absPath);
 	}
 }

@@ -56,5 +56,4 @@ public class DataReader
 		return (sum);
 	}
 
-
 }
