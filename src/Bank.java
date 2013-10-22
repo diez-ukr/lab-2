@@ -3,8 +3,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Bank
 {
-	private LinkedList<Account> accounts;
-	private AtomicInteger transactionNumber;
+	private final LinkedList<Account> accounts;
+	private final AtomicInteger transactionNumber;
 
 	public Bank()
 	{

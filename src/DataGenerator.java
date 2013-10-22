@@ -4,7 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Random;
 
-public class DataGenerator
+class DataGenerator
 {
 	private static String resetFile(String fileName) throws IOException
 	{
@@ -31,7 +31,7 @@ public class DataGenerator
 		return generate(10, fileName);
 	}
 
-	public static String generate(int accountNumber, String fileName) throws IOException
+	private static String generate(int accountNumber, String fileName) throws IOException
 	{
 		String absPath = resetFile(fileName);
 		DataOutputStream os = new DataOutputStream(new FileOutputStream(fileName));

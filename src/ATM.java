@@ -2,9 +2,9 @@ import java.util.Stack;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.RejectedExecutionException;
 
-public class ATM implements Runnable
+class ATM implements Runnable
 {
-	private Stack<int[]> transactions;
+	private final Stack<int[]> transactions;
 	private final ExecutorService consumer;
 	private final Bank bank;
 

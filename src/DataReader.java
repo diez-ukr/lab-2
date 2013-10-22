@@ -2,7 +2,7 @@ import java.io.*;
 
 public class DataReader
 {
-	public int accountNumber;
+	private int accountNumber;
 	public int accountAmount[];
 	public int transactionNumber;
 	public int transactions[][];

@@ -1,8 +1,8 @@
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Account
+class Account
 {
-	private AtomicInteger amount;
+	private final AtomicInteger amount;
 
 	public Account(int amount)
 	{

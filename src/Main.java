@@ -4,8 +4,8 @@ import java.util.concurrent.*;
 
 public class Main
 {
-	public static Bank bank = new Bank();
-	public static DataReader dr;
+	private static final Bank bank = new Bank();
+	private static final int ATMNumber = 10;
 
 	public static void main(String[] args) throws InterruptedException, IOException
 	{
@@ -18,7 +18,7 @@ public class Main
 		else
 			dataFileName = args[0];
 
-		dr = new DataReader(dataFileName);
+		DataReader dr = new DataReader(dataFileName);
 		dr.read();
 		System.out.println("Check sum after file reading is " + dr.getAccountSum() + "$.");
 
@@ -38,12 +38,12 @@ public class Main
 		);
 
 		LinkedList<ATM> atm = new LinkedList<ATM>();
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < ATMNumber; i++)
 			atm.add(new ATM(consumer, bank));
 
 		int targetIndex = 0;
 		for (int transaction[] : dr.transactions)
-			atm.get(targetIndex % 5).addTransaction(transaction);
+			atm.get(targetIndex % ATMNumber).addTransaction(transaction);
 
 		LinkedList<Thread> threads = new LinkedList<Thread>();
 		for (ATM a : atm)
@@ -55,7 +55,7 @@ public class Main
 		for (Thread t : threads)
 			t.join();
 
-		consumer.awaitTermination(3, TimeUnit.SECONDS);
+
 		consumer.shutdown();
 
 		while (!consumer.awaitTermination(10, TimeUnit.SECONDS))

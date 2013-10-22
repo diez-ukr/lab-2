@@ -1,4 +1,4 @@
-public class Consumer implements  Runnable
+class Consumer implements  Runnable
 {
 	private final Bank bank;
 	private final int transaction[];
